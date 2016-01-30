@@ -29,9 +29,9 @@ First of all you need to define a CDLL object (frankly it is a pointer to a stru
 CDLL list = NULL;
 ```
 
-###Functions
+### Functions
 
-####cdll_init (CDLL *list, void *data) => void
+#### cdll_init (CDLL *list, void *data) => void
 This function initialize a list if it is empty and gets a data as it's first data.
 You rarely have to use this function because when you use other functions to manipulate the list, they know when to invoke this function.
 
@@ -44,7 +44,7 @@ int *a = malloc(sizeof(int));
 *a = 10;
 cdll_init (&list, a);
 
-// => list = [10]
+// => list: [10]
 
 int *b = malloc(sizeof(int));
 *b = 20;
@@ -52,10 +52,10 @@ int *b = malloc(sizeof(int));
 // is already initialized
 cdll_init (&list, b);
 
-// => list = [10]
+// => list: [10]
 ```
 
-####cdll_push (CDLL *list, void *data) => void
+#### cdll_push (CDLL *list, void *data) => void
 Adds a node with given data to end of list.
 
 If list is empty and not initialized yet (== NULL), this functions invokes cdll_init and initializes it.
@@ -67,11 +67,37 @@ int *a = malloc(sizeof(int));
 *a = 10;
 cdll_push (&list, a);
 
-// => list = [10]
+// => list: [10]
 
 int *b = malloc(sizeof(int));
 *b = 20;
 cdll_push (&list, b);
 
-// => list = [10, 20]
+// => list: [10, 20]
+```
+
+#### cdll_pop (CDLL *list) => void *
+Removes and frees the last node in the list and returns it's data.
+
+This function does not free the last node's data's memory, so it is on you to
+do whatever you want with it such as freeing it's dynamic memory.
+
+```C
+CDLL list = NULL;
+
+for (int i = 1; i <= 5; ++i) {
+        int *num = malloc(sizeof(int));
+        *num = i;
+        cdll_push(&list, num);
+}
+
+// => list: [1, 2, 3, 4, 5]
+
+int *data = (int *) cdll_pop(&list);
+
+// => *data: 5
+// => list: [1, 2, 3, 4]
+
+free(data);
+
 ```

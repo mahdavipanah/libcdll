@@ -251,3 +251,8 @@ cdll_foreach(&list, func, number);
 // => list: [3, 4, 5, 6, 7]
 
 ```
+
+#### cdll_reverse_foreach (const CDLL *list, void (*function) (void*, void*), void *user_data) => void
+Iterates over list's nodes starting from the last node to the first one and calls the given handler function with these two parameters :
+* The node's data (is probably different in each handler's invocation)
+* The given user_data (is same in every handler's invocation)

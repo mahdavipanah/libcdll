@@ -256,3 +256,34 @@ cdll_foreach(&list, func, number);
 Iterates over list's nodes starting from the last node to the first one and calls the given handler function with these two parameters :
 * The node's data (is probably different in each handler's invocation)
 * The given user_data (is same in every handler's invocation)
+
+#### cdll_find (const CDLL *list, const void *data) => CDLL
+Returns the node in the list that it's data is the same as the the second argument. In other word, the node that it's data is pointing to the same place that given data argument points to.
+
+Returns NULL if no node found.
+
+```C
+CDLL list = NULL;
+
+int *data_3;
+
+for (int i = 1; i <= 5; ++i) {
+        int *num = malloc(sizeof(int));
+        *num = i;
+        cdll_push(&list, num);
+
+        if (i == 3)
+                data_3 = num;
+}
+
+// => list: [1, 2, 3, 4, 5]
+
+CDLL node = cdll_find(&list, data_3);
+
+int *data = (int *) node->data;
+int *next_node = (int *) node->next->data;
+
+// => *data: 3
+// => *next_node: 4
+
+```

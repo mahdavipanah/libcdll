@@ -192,3 +192,27 @@ int *second_data = (int *) first_node->next->data;
 // => *second_data: 2
 
 ```
+
+#### cdll_last (const CDLL *list) => CDLL
+Returns the last node in the list.
+
+```C
+CDLL list = NULL;
+
+for (int i = 1; i <= 5; ++i) {
+        int *num = malloc(sizeof(int));
+        *num = i;
+        cdll_push(&list, num);
+}
+
+// => list: [1, 2, 3, 4, 5]
+
+CDLL last_node = cdll_last(&list);
+
+int *data = (int *) last_node->data;
+int *before_last_data = (int *) last_node->previous->data;
+
+// => *data: 5
+// => *before_last_data: 4
+
+```

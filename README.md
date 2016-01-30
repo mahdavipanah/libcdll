@@ -150,7 +150,7 @@ free(data);
 ```
 
 #### cdll_length (const CDLL *list) => size_t
-Returns the length of the list. (Number of nodes (elements))
+Returns the length of the list. (Number of nodes (elements)).
 
 ```C
 CDLL list = NULL;
@@ -166,5 +166,29 @@ for (int i = 1; i <= 5; ++i) {
 size_t len = cdll_length(&list);
 
 // => len: 5
+
+```
+
+#### cdll_first (const CDLL *list) => CDLL
+Returns the first node in the list.
+
+```C
+CDLL list = NULL;
+
+for (int i = 1; i <= 5; ++i) {
+        int *num = malloc(sizeof(int));
+        *num = i;
+        cdll_push(&list, num);
+}
+
+// => list: [1, 2, 3, 4, 5]
+
+CDLL first_node = cdll_first(&list);
+
+int *data = (int *) first_node->data;
+int *second_data = (int *) first_node->next->data;
+
+// => *data: 1
+// => *second_data: 2
 
 ```

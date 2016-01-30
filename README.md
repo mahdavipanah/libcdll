@@ -287,3 +287,43 @@ int *next_node = (int *) node->next->data;
 // => *next_node: 4
 
 ```
+
+#### cdll_deep_find (const CDLL *list, const void *data, int (*compare)(const void *, const void *)) => CDLL
+Returns the node in the list that it's data is the same as the the second argument. In other word, the node that it's data is pointing to the same place that given data argument points to.
+But you have to provide a function that tells when two data valus are equal. compare function should return 0 if two values are equal.
+
+Returns NULL if no node found.
+
+```C
+int int_ptr_compare (const void *a, const void *b)
+{
+	int m = *((int *) a);
+	int n = *((int *) n);
+	if (m == n)
+		return 0;
+}
+```
+
+```C
+CDLL list = NULL;
+
+for (int i = 1; i <= 5; ++i) {
+        int *num = malloc(sizeof(int));
+        *num = i;
+        cdll_push(&list, num);
+}
+
+// => list: [1, 2, 3, 4, 5]
+
+int * number = malloc(sizeof(int));
+*number = 3;
+
+CDLL node = cdll_find(&list, number, int_ptr_compare);
+
+int *data = (int *) node->data;
+int *next_node = (int *) node->next->data;
+
+// => *data: 3
+// => *next_node: 4
+
+```

@@ -1,6 +1,6 @@
 # libcdll
-This project created as part of my data structures course in university. <br/ >
-I really tried to write my codes as clean as I can so every one can read it quikly, no matter he is a hard worker C programmer or some college student who wants to learn C.
+This was project created as part of my data structures course in university. <br/ >
+I really tried to write my codes as clean as I can, so everyone can read and understand it quikly, no matter he is a hard worker C programmer or some college student who wants to learn C.
 
 I'm a perfectionist and this project like all creations in the world is not flawless, so feel free to commit! :)
 
@@ -44,7 +44,7 @@ int *a = malloc(sizeof(int));
 *a = 10;
 cdll_init (&list, a);
 
-// list = [4]
+// => list = [10]
 
 int *b = malloc(sizeof(int));
 *b = 20;
@@ -52,8 +52,41 @@ int *b = malloc(sizeof(int));
 // is already initialized
 cdll_init (&list, b);
 
-// list = [4]
+// => list = [10]
+```
 
+####cdll_push (CDLL *list, void *data) => void
+Adds a node with given data to end of list.
+
+If list is empty and not initialized yet (== NULL), this functions invokes cdll_init and initializes it.
+
+```C
+CDLL list = NULL;
+
+int *a = malloc(sizeof(int));
+*a = 10;
+cdll_push (&list, a);
+
+// => list = [10]
+
+int *b = malloc(sizeof(int));
+*b = 20;
+cdll_push (&list, b);
+
+// => list = [10, 20]
+```
+
+
+
+
+
+
+
+
+dy initialized
+cdll_init (&list, b);
+
+// => list = [10]
 ```
 
 

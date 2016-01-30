@@ -362,3 +362,13 @@ Removes the first node that has the given data and return it's data.
 
 #### cdll_deep_remove_data (CDLL *list, const void *data) => void*
 Deep removes the first node that has the given data and return it's data.
+
+#### cdll_copy (const CDLL *list) => CDLL
+Returns a shallow copy of given list.
+
+Shallow copy means this function does not duplicate any node's data, it just copy it's address (pointer).
+
+#### cdll_deep_copy (const CDLL *list, void*(*function)(const void*, void*), void *user_data) => CDLL
+ Returns a deep copy of given list.
+ 
+This functions gets a function pointer for copying every node's data.

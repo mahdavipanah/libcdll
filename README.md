@@ -101,3 +101,24 @@ int *data = (int *) cdll_pop(&list);
 free(data);
 
 ```
+
+#### cdll_add (CDLL *list, void *data) => void
+Adds a node to first of list with the given data.
+
+If list is empty and not initialized yet (== NULL), this functions invokes cdll_init and initializes it.
+
+```C
+CDLL list = NULL;
+
+int *a = malloc(sizeof(int));
+*a = 10;
+cdll_add (&list, a);
+
+// => list: [10]
+
+int *b = malloc(sizeof(int));
+*b = 20;
+cdll_add (&list, b);
+
+// => list: [20, 10]
+```

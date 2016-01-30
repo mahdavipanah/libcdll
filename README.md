@@ -148,3 +148,23 @@ int *data = (int *) cdll_remove_first(&list);
 free(data);
 
 ```
+
+#### cdll_length (const CDLL *list) => size_t
+Returns the length of the list. (Number of nodes (elements))
+
+```C
+CDLL list = NULL;
+
+for (int i = 1; i <= 5; ++i) {
+        int *num = malloc(sizeof(int));
+        *num = i;
+        cdll_push(&list, num);
+}
+
+// => list: [1, 2, 3, 4, 5]
+
+size_t len = cdll_length(&list);
+
+// => len: 5
+
+```

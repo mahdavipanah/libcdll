@@ -327,3 +327,8 @@ int *next_node = (int *) node->next->data;
 // => *next_node: 4
 
 ```
+
+#### cdll_position (const CDLL *list, const CDLL node) => int
+Returns index of node in the list starting from 0.
+
+Returns -1 if node not found.

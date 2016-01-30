@@ -350,3 +350,15 @@ Returns -1 if no node with given data found.
 Removes a node with given pointer in the list and returns it's data.
 
 This function does not free the node's data, so it is on you to do whatever you want with it such as freeing it's dynamic memory.
+
+#### cdll_nth (const CDLL *list, size_t index) => CDLL
+Returns the nth node in the list.
+
+#### cdll_nth_data (const CDLL *list, size_t index) => void*
+Returns the nth data in the list.
+
+#### cdll_remove_data (CDLL *list, const void *data) => void*
+Removes the first node that has the given data and return it's data.
+
+#### cdll_deep_remove_data (CDLL *list, const void *data) => void*
+Deep removes the first node that has the given data and return it's data.

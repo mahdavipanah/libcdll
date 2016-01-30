@@ -75,24 +75,3 @@ cdll_push (&list, b);
 
 // => list = [10, 20]
 ```
-
-
-
-
-
-
-
-
-dy initialized
-cdll_init (&list, b);
-
-// => list = [10]
-```
-
-
-
-
-
-
-
-

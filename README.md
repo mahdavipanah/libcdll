@@ -344,3 +344,9 @@ Returns -1 if no node with given data found.
 Returns index of first node with data equal to the data argument. But you have to provide a function that tells when two data valus are equal. compare function should return 0 if two values are equal.
 
 Returns -1 if no node with given data found.
+
+
+#### cdll_delete_node (CDLL *list, CDLL  node) => void*
+Removes a node with given pointer in the list and returns it's data.
+
+This function does not free the node's data, so it is on you to do whatever you want with it such as freeing it's dynamic memory.

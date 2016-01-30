@@ -334,7 +334,13 @@ Returns index of node in the list starting from 0.
 Returns -1 if node not found.
 
 
-#### cdll_data_position (const CDLL *list, const void *data) = int
+#### cdll_data_position (const CDLL *list, const void *data) => int
 Returns index of first node with data equal to the data argument.
+
+Returns -1 if no node with given data found.
+
+
+#### cdll_deep_data_position (const CDLL *list, const void *data,  int (*compare)(const void *, const void *)) => int
+Returns index of first node with data equal to the data argument. But you have to provide a function that tells when two data valus are equal. compare function should return 0 if two values are equal.
 
 Returns -1 if no node with given data found.

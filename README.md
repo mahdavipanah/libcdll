@@ -216,3 +216,38 @@ int *before_last_data = (int *) last_node->previous->data;
 // => *before_last_data: 4
 
 ```
+
+#### cdll_foreach (const CDLL *list, void (*function) (void*, void*), void *user_data) => void
+Iterates over list's nodes starting from the first node to the last one and calls the given handler function with these two parameters :
+* The node's data (is probably different in each handler's invocation)
+* The given user_data (is same in every handler's invocation)
+
+```C
+void func (void *data, void *user_data)
+{
+        int * number     = (int *) data;
+        int * sum_number = (int *) user_data;
+
+        *number += *sum_number;
+}
+```
+
+```C
+CDLL list = NULL;
+
+for (int i = 1; i <= 5; ++i) {
+        int *num = malloc(sizeof(int));
+        *num = i;
+        cdll_push(&list, num);
+}
+
+// => list: [1, 2, 3, 4, 5]
+
+int * number = malloc(sizeof(int));
+*number = 2;
+
+cdll_foreach(&list, func, number);
+
+// => list: [3, 4, 5, 6, 7]
+
+```

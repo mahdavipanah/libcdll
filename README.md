@@ -122,3 +122,29 @@ cdll_add (&list, b);
 
 // => list: [20, 10]
 ```
+
+#### cdll_remove_first (CDLL *list) => void *
+Removes and frees the first node in the list and returns it's data.
+
+This function does not free the last node's data's memory, so it is on you to
+do whatever you want with it such as freeing it's dynamic memory.
+
+```C
+CDLL list = NULL;
+
+for (int i = 1; i <= 5; ++i) {
+        int *num = malloc(sizeof(int));
+        *num = i;
+        cdll_push(&list, num);
+}
+
+// => list: [1, 2, 3, 4, 5]
+
+int *data = (int *) cdll_remove_first(&list);
+
+// => *data: 1
+// => list: [2, 3, 4, 5]
+
+free(data);
+
+```

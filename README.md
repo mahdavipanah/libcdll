@@ -15,7 +15,7 @@ gcc -std=c99 main.c libcdll.c
 clang -std=c99 main.c libcdll.c
 ```
 
-## How to use it? (or API!)
+## How to use it?
 
 First of all you need to define a CDLL object.
 
